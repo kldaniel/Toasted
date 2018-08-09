@@ -8,5 +8,4 @@
 
 import Foundation
 
-// TODO: Start implementing
 class Toasted {}
