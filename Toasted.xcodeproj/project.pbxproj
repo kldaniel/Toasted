@@ -147,7 +147,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = Toasted;
+				ORGANIZATIONNAME = "Daniel Kiss";
 				TargetAttributes = {
 					A6CB191F211C823000CDEF52 = {
 						CreatedOnToolsVersion = 9.4.1;
