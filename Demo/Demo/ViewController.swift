@@ -14,8 +14,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let toast1: Toast = Toast(title: "Hello, Toasted!")
-        toast1.show(in: self.view)
+        let toast1: Toast = Toast(title: "Hello, Toasted! Lorem ipsum dolor sit amet 1. Lorem ipsum dolor sit amet 2.")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            toast1.show(in: self.view)
+        }
 
     }
 

@@ -23,7 +23,12 @@ public class Toast: Toastable {
     // MARK: - Constants
 
     private static var innerPadding: CGFloat = 8.0
+    
     private static var cornerRadius: CGFloat = 6.0
+    
+    private static var becomesVisibleDuration: TimeInterval = 1.75
+    
+    private static var fadeDuration: TimeInterval = 1.75
 
     // MARK: - Properties
 
@@ -31,7 +36,7 @@ public class Toast: Toastable {
 
     private var timer: Timer?
 
-    var visibleDuration: TimeInterval = 3.0
+    var beforeFadeDuration: TimeInterval = 3.0
 
     // MARK: - Constructors
 
@@ -54,6 +59,10 @@ public class Toast: Toastable {
 
     public final func show(in containerView: UIView) {
 
+        if containerView.subviews.contains(toastView) { return }
+        
+        toastView.alpha = 0.0
+        
         containerView.addSubview(toastView)
 
         toastView.centerXAnchor.constraint(
@@ -64,25 +73,48 @@ public class Toast: Toastable {
             equalTo: containerView.bottomAnchor,
             constant: -48.0
         ).isActive = true
+        
+        toastView.leadingAnchor.constraint(
+            greaterThanOrEqualTo: containerView.leadingAnchor,
+            constant: 16.0
+        ).isActive = true
+        
+        toastView.trailingAnchor.constraint(
+            greaterThanOrEqualTo: containerView.trailingAnchor,
+            constant: -16.0
+        ).isActive = true
 
-        if timer != nil {
-            timer?.invalidate()
-            timer = nil
+        UIView.animate(withDuration: Toast.becomesVisibleDuration, delay: 0.0, options: [.curveEaseIn], animations: {
+            self.toastView.alpha = 1.0
+        }) { (isCompleted: Bool) in
+            
+            if self.timer != nil {
+                self.timer?.invalidate()
+                self.timer = nil
+            }
+            
+            self.timer = Timer.scheduledTimer(
+                timeInterval: self.beforeFadeDuration,
+                target: self,
+                selector: #selector(self.hide),
+                userInfo: nil, repeats: true
+            )
+            
         }
-
-        timer = Timer.scheduledTimer(
-            timeInterval: visibleDuration,
-            target: self,
-            selector: #selector(hide),
-            userInfo: nil, repeats: true
-        )
 
     }
 
     @objc public final func hide() {
-        toastView.removeFromSuperview()
+        
         timer?.invalidate()
         timer = nil
+        
+        UIView.animate(withDuration: Toast.fadeDuration, delay: 0.0, options: [.curveEaseIn], animations: {
+            self.toastView.alpha = 0.0
+        }) { (_) in
+            self.toastView.removeFromSuperview()
+        }
+        
     }
 
 }
