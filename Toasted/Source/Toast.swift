@@ -18,6 +18,15 @@ private protocol Toastable {
 
 }
 
+/// A Toast that can be represented on the screen.
+///
+/// A toast is an easy android-like alternative for UIAlertViews.
+/// By default a toast will be hidden after 3 seconds it was shown.
+/// You can alter this by changing the duration property of the Toast object.
+///
+///     let toast: Toast = Toast(title: String)
+///     toast.show(in: self.view) // Will automatically fade after 3 seconds
+///     toast.hide() // Hiding the toast manually. Optional to use.
 public class Toast: Toastable {
 
     // MARK: - Properties
@@ -26,6 +35,7 @@ public class Toast: Toastable {
 
     private var timer: Timer?
 
+    /// How long (in seconds) the Toast will be visible on the screen before it starts to fade out.
     public var duration: TimeInterval = Toasted.defaultDuration
 
     // MARK: - Constructors
@@ -34,6 +44,7 @@ public class Toast: Toastable {
         self.toastView = toastView
     }
 
+    /// Initializes a basic Toast that has only a title. Title can be changed later.
     public convenience init(title: String) {
         self.init(
             toastView: Toast.makeBasicToastView(title: title)
@@ -47,6 +58,11 @@ public class Toast: Toastable {
 
     // MARK: - Core
 
+    /// Makes the Toast visible on the screen for the pre-defined duration.
+    ///
+    /// After that duration it will start to fade out.
+    /// - Parameters:
+    ///     - in: The view the Toast will be displayed in.
     public final func show(in containerView: UIView) {
 
         if containerView.subviews.contains(toastView) { return }
@@ -103,6 +119,7 @@ public class Toast: Toastable {
 
     }
 
+    /// Hides the Toast and removes it from the view.
     @objc public final func hide() {
 
         timer?.invalidate()

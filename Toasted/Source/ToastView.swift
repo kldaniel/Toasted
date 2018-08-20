@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// The view that is responsible for defining the look and feel of the Toast.
+///
+/// It can be subclassed for custom layouts and behaviors.
 public class ToastView: UIView {
 
     func setupView() {
