@@ -10,7 +10,7 @@ import Foundation
 
 private protocol Toastable {
 
-    init(toastView: BasicToastView)
+    init(toastView: ToastView)
 
     func show(in containerView: UIView)
 
@@ -31,7 +31,7 @@ public class Toast: Toastable {
 
     // MARK: - Properties
 
-    private var toastView: BasicToastView
+    private var toastView: ToastView
 
     private var timer: Timer?
 
@@ -40,7 +40,7 @@ public class Toast: Toastable {
 
     // MARK: - Constructors
 
-    public required init(toastView: BasicToastView) {
+    public required init(toastView: ToastView) {
         self.toastView = toastView
     }
 
