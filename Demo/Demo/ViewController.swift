@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Toasted
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let toast1: Toast = Toast(title: "Hello, Toasted!")
+        toast1.show(in: self.view)
+
     }
 
     override func didReceiveMemoryWarning() {
