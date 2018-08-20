@@ -10,7 +10,7 @@ import Foundation
 
 private protocol Toastable {
 
-    init(toastView: UIView)
+    init(toastView: BasicToastView)
 
     func show(in containerView: UIView)
 
@@ -20,27 +20,17 @@ private protocol Toastable {
 
 public class Toast: Toastable {
 
-    // MARK: - Constants
-
-    private static var innerPadding: CGFloat = 8.0
-    
-    private static var cornerRadius: CGFloat = 6.0
-    
-    private static var becomesVisibleDuration: TimeInterval = 1.75
-    
-    private static var fadeDuration: TimeInterval = 1.75
-
     // MARK: - Properties
 
-    private var toastView: UIView
+    private var toastView: BasicToastView
 
     private var timer: Timer?
 
-    var beforeFadeDuration: TimeInterval = 3.0
+    public var duration: TimeInterval = Toasted.defaultDuration
 
     // MARK: - Constructors
 
-    public required init(toastView: UIView) {
+    public required init(toastView: BasicToastView) {
         self.toastView = toastView
     }
 
@@ -60,9 +50,9 @@ public class Toast: Toastable {
     public final func show(in containerView: UIView) {
 
         if containerView.subviews.contains(toastView) { return }
-        
+
         toastView.alpha = 0.0
-        
+
         containerView.addSubview(toastView)
 
         toastView.centerXAnchor.constraint(
@@ -71,50 +61,62 @@ public class Toast: Toastable {
 
         toastView.bottomAnchor.constraint(
             equalTo: containerView.bottomAnchor,
-            constant: -48.0
-        ).isActive = true
-        
-        toastView.leadingAnchor.constraint(
-            greaterThanOrEqualTo: containerView.leadingAnchor,
-            constant: 16.0
-        ).isActive = true
-        
-        toastView.trailingAnchor.constraint(
-            greaterThanOrEqualTo: containerView.trailingAnchor,
-            constant: -16.0
+            constant: -Toasted.bottomSpace
         ).isActive = true
 
-        UIView.animate(withDuration: Toast.becomesVisibleDuration, delay: 0.0, options: [.curveEaseIn], animations: {
+        toastView.leadingAnchor.constraint(
+            greaterThanOrEqualTo: containerView.leadingAnchor,
+            constant: Toasted.outerPadding
+        ).isActive = true
+
+        toastView.trailingAnchor.constraint(
+            greaterThanOrEqualTo: containerView.trailingAnchor,
+            constant: -Toasted.outerPadding
+        ).isActive = true
+
+        toastView.topAnchor.constraint(
+            greaterThanOrEqualTo: containerView.topAnchor,
+            constant: Toasted.outerPadding
+        ).isActive = true
+
+        UIView.animate(
+            withDuration: Toasted.becomesVisibleDuration,
+            delay: 0.0,
+            options: [.curveEaseIn],
+        animations: {
             self.toastView.alpha = 1.0
-        }) { (isCompleted: Bool) in
-            
+        }, completion: { (_) in
+
             if self.timer != nil {
                 self.timer?.invalidate()
                 self.timer = nil
             }
-            
+
             self.timer = Timer.scheduledTimer(
-                timeInterval: self.beforeFadeDuration,
+                timeInterval: self.duration,
                 target: self,
                 selector: #selector(self.hide),
                 userInfo: nil, repeats: true
             )
-            
-        }
+
+        })
 
     }
 
     @objc public final func hide() {
-        
+
         timer?.invalidate()
         timer = nil
-        
-        UIView.animate(withDuration: Toast.fadeDuration, delay: 0.0, options: [.curveEaseIn], animations: {
+
+        UIView.animate(
+            withDuration: Toasted.fadeDuration,
+            delay: 0.0, options: [.curveEaseIn],
+        animations: {
             self.toastView.alpha = 0.0
-        }) { (_) in
+        }, completion: { (_) in
             self.toastView.removeFromSuperview()
-        }
-        
+        })
+
     }
 
 }
@@ -123,49 +125,9 @@ public class Toast: Toastable {
 
 extension Toast {
 
-    private static func makeBasicToastView(title: String) -> UIView {
-
-        let toastView: UIView = UIView(frame: .zero)
-        toastView.backgroundColor = .gray
-        toastView.clipsToBounds = true
-
-        let titleLabel: UILabel = UILabel(frame: .zero)
-        titleLabel.text = title
-        titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = .left
-        titleLabel.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-        titleLabel.textColor = .white
-        titleLabel.sizeToFit()
-
-        toastView.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        toastView.addSubview(titleLabel)
-
-        titleLabel.leadingAnchor.constraint(
-            equalTo: toastView.leadingAnchor,
-            constant: Toast.innerPadding
-        ).isActive = true
-
-        titleLabel.trailingAnchor.constraint(
-            equalTo: toastView.trailingAnchor,
-            constant: -Toast.innerPadding
-        ).isActive = true
-
-        titleLabel.topAnchor.constraint(
-            equalTo: toastView.topAnchor,
-            constant: Toast.innerPadding
-        ).isActive = true
-
-        titleLabel.bottomAnchor.constraint(
-            equalTo: toastView.bottomAnchor,
-            constant: -Toast.innerPadding
-        ).isActive = true
-
-        toastView.layer.cornerRadius = Toast.cornerRadius
-
+    private static func makeBasicToastView(title: String) -> BasicToastView {
+        let toastView: BasicToastView = BasicToastView(frame: .zero, title: title)
         return toastView
-
     }
 
 }
