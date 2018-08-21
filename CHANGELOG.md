@@ -9,6 +9,7 @@ The changelog for **Toasted**.
   - Show the toast in a UIView.
   - After a given period of time automatically hides the toast.
   - Hide the toast manually.
+  - Setting the duration property to 0 prevents the toast from being faded.
 - **ToastView**
   - Holds information and responsible for the UI look and feel.
 - **BasicToastView**
