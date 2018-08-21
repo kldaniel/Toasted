@@ -36,6 +36,13 @@ public class Toast: Toastable {
     private var timer: Timer?
 
     /// How long (in seconds) the Toast will be visible on the screen before it starts to fade out.
+    /// Default 3.0 seconds.
+    ///
+    /// If duration is set to zero, the toast wont be faded automatically, only by calling the
+    /// hide() method on the toast or dismissing the view the ToastView was added to.
+    ///
+    /// - Warning:
+    /// Setting this property after the show() method was called has no effect at all!
     public var duration: TimeInterval = Toasted.defaultDuration
 
     // MARK: - Constructors
@@ -102,19 +109,7 @@ public class Toast: Toastable {
         animations: {
             self.toastView.alpha = 1.0
         }, completion: { (_) in
-
-            if self.timer != nil {
-                self.timer?.invalidate()
-                self.timer = nil
-            }
-
-            self.timer = Timer.scheduledTimer(
-                timeInterval: self.duration,
-                target: self,
-                selector: #selector(self.hide),
-                userInfo: nil, repeats: true
-            )
-
+            self.setupFadeTimer()
         })
 
     }
@@ -145,6 +140,35 @@ extension Toast {
     private static func makeBasicToastView(title: String) -> BasicToastView {
         let toastView: BasicToastView = BasicToastView(frame: .zero, title: title)
         return toastView
+    }
+
+}
+
+// MARK: - Helper
+
+extension Toast {
+
+    /// Sets up the timer that is responsible for triggering fading and removal of the toast.
+    ///
+    /// If duration is set to zero, the toast wont be faded automatically, only by calling the
+    /// hide() method on the toast or dismissing the view the ToastView was added to.
+    private func setupFadeTimer() {
+
+        if self.timer != nil {
+            self.timer?.invalidate()
+            self.timer = nil
+        }
+
+        // Duration 0 means its visible forever without fading
+        if self.duration == 0 { return }
+
+        self.timer = Timer.scheduledTimer(
+            timeInterval: self.duration,
+            target: self,
+            selector: #selector(self.hide),
+            userInfo: nil, repeats: true
+        )
+
     }
 
 }
