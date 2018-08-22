@@ -166,7 +166,7 @@ extension Toast {
             timeInterval: self.duration,
             target: self,
             selector: #selector(self.hide),
-            userInfo: nil, repeats: true
+            userInfo: nil, repeats: false
         )
 
     }
