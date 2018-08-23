@@ -16,6 +16,10 @@ The changelog for **Toasted**.
   - A basic `ToastView` with a title. This is the standard use of Toasts.
 - **Toasted**
   - Contains only constants for `Toast` or `ToastView`.
+- **TutorialListController**
+  - List of possible examples. Currently has only one.
+- **TutorialBasicController**
+  - Simple usage example for displaying two different toast even at the same time.
 
 ### Changed
 
