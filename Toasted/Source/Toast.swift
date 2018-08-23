@@ -93,7 +93,7 @@ public class Toast: Toastable {
         ).isActive = true
 
         toastView.trailingAnchor.constraint(
-            greaterThanOrEqualTo: containerView.trailingAnchor,
+            lessThanOrEqualTo: containerView.trailingAnchor,
             constant: -Toasted.outerPadding
         ).isActive = true
 
