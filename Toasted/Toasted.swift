@@ -14,6 +14,12 @@ extension Toasted {
 
     static let defaultDuration: TimeInterval = 3.0
 
+    static let defaultTextAlignment: NSTextAlignment = .left
+
+    static let defaultTextColor: UIColor = .black
+
+    static let defaultBackgroundColor: UIColor = .lightGray
+
     static let bottomSpace: CGFloat = 48.0
 
     static let innerPadding: CGFloat = 8.0

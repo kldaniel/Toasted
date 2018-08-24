@@ -23,7 +23,9 @@ public class BasicToastView: ToastView {
         weight: .regular
     )
 
-    public var textColor: UIColor = .black
+    public var textAlignment: NSTextAlignment = Toasted.defaultTextAlignment
+
+    public var textColor: UIColor = Toasted.defaultTextColor
 
     // MARK: - Constructors
 
@@ -49,7 +51,7 @@ public class BasicToastView: ToastView {
 
         titleLabel.text = title
         titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = .left
+        titleLabel.textAlignment = textAlignment
         titleLabel.font = font
         titleLabel.textColor = textColor
         titleLabel.sizeToFit()

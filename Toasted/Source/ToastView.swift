@@ -16,7 +16,7 @@ public class ToastView: UIView {
     func setupView() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = Toasted.cornerRadius
-        self.backgroundColor = .lightGray
+        self.backgroundColor = Toasted.defaultBackgroundColor
         self.clipsToBounds = true
     }
 
