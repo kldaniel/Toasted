@@ -18,19 +18,14 @@ public class BasicToastView: ToastView {
 
     public var title: String = ""
 
-    public var font: UIFont = UIFont.systemFont(
-        ofSize: 13,
-        weight: .regular
-    )
-
-    public var textAlignment: NSTextAlignment = Toasted.defaultTextAlignment
-
-    public var textColor: UIColor = Toasted.defaultTextColor
-
     // MARK: - Constructors
 
     public init(frame: CGRect, title: String) {
-        super.init(frame: frame)
+
+        super.init(
+            frame: frame,
+            configuration: ToastConfiguration()
+        )
 
         self.title = title
         setupView()
@@ -51,9 +46,9 @@ public class BasicToastView: ToastView {
 
         titleLabel.text = title
         titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = textAlignment
-        titleLabel.font = font
-        titleLabel.textColor = textColor
+        titleLabel.textAlignment = configuration.textAlignment
+        titleLabel.font = configuration.font
+        titleLabel.textColor = configuration.textColor
         titleLabel.sizeToFit()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 

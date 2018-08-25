@@ -34,21 +34,14 @@ public class Toast: Toastable {
     private var toastView: ToastView
 
     private var timer: Timer?
-
-    /// How long (in seconds) the Toast will be visible on the screen before it starts to fade out.
-    /// Default 3.0 seconds.
-    ///
-    /// If duration is set to zero, the toast wont be faded automatically, only by calling the
-    /// hide() method on the toast or dismissing the view the ToastView was added to.
-    ///
-    /// - Warning:
-    /// Setting this property after the show() method was called has no effect at all!
-    public var duration: TimeInterval = Toasted.defaultDuration
+    
+    public var configuration: ToastConfiguration = ToastConfiguration()
 
     // MARK: - Constructors
 
     public required init(toastView: ToastView) {
         self.toastView = toastView
+        self.toastView.configuration = configuration
     }
 
     /// Initializes a basic Toast that has only a title. Title can be changed later.
@@ -160,10 +153,10 @@ extension Toast {
         }
 
         // Duration 0 means its visible forever without fading
-        if self.duration == 0 { return }
+        if self.configuration.duration == 0 { return }
 
         self.timer = Timer.scheduledTimer(
-            timeInterval: self.duration,
+            timeInterval: self.configuration.duration,
             target: self,
             selector: #selector(self.hide),
             userInfo: nil, repeats: false
