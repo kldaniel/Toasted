@@ -30,7 +30,10 @@ extension TutorialBasicController {
 
     @IBAction func actionShow1(_ sender: UIButton) {
 
-        let toast: Toast = Toast(title: "Hello, Toasted! This is a simple toast you can display on the screen. It is useful for showing quick information to the user.")
+        let toast: Toast = Toast(
+            title: "Hello, Toasted! This is a simple toast you can display on the screen. "
+                + "It is useful for showing quick information to the user."
+        )
         toast.show(in: self.view)
 
     }

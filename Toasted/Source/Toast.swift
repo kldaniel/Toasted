@@ -34,7 +34,7 @@ public class Toast: Toastable {
     private var toastView: ToastView
 
     private var timer: Timer?
-    
+
     public var configuration: ToastConfiguration = ToastConfiguration()
 
     // MARK: - Constructors
@@ -58,7 +58,7 @@ public class Toast: Toastable {
 
     // MARK: - Core
 
-    /// Makes the Toast visible on the screen for the pre-defined duration.
+    /// Makes the Toast visible on the given view for the pre-defined duration.
     ///
     /// After that duration it will start to fade out.
     /// - Parameters:
@@ -105,6 +105,16 @@ public class Toast: Toastable {
             self.setupFadeTimer()
         })
 
+    }
+
+    /// Makes the Toast visible on the screen for the pre-defined duration.
+    ///
+    /// After that duration it will start to fade out.
+    /// - Parameters:
+    ///     - in: The view the Toast will be displayed in.
+    public func show() {
+        guard let window: UIWindow = ToastHelper.applicationWindow() else { return }
+        show(in: window)
     }
 
     /// Hides the Toast and removes it from the view.
