@@ -19,6 +19,14 @@ class TutorialBasicController: UIViewController {
         title = "Basic Demo"
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Calls a mock service that will present a toast after 5 seconds.
+        MockService.doSmthg()
+
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
@@ -41,7 +49,7 @@ extension TutorialBasicController {
     @IBAction func actionShow2(_ sender: UIButton) {
 
         let toast: Toast = Toast(title: "Another quick message.")
-        toast.show(in: self.view)
+        toast.show()
 
     }
 

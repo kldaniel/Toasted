@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A6886C11212DFB5B00D9EBD6 /* TutorialListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6886C10212DFB5A00D9EBD6 /* TutorialListController.swift */; };
 		A6886C14212DFD1D00D9EBD6 /* TutorialBasicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6886C13212DFD1D00D9EBD6 /* TutorialBasicController.swift */; };
+		A6C727A62134A1AF0077DBE3 /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C727A52134A1AF0077DBE3 /* MockService.swift */; };
 		A6CB1949211C833900CDEF52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB1948211C833900CDEF52 /* AppDelegate.swift */; };
 		A6CB194B211C833900CDEF52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CB194A211C833900CDEF52 /* ViewController.swift */; };
 		A6CB194E211C833900CDEF52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CB194C211C833900CDEF52 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		A6886C10212DFB5A00D9EBD6 /* TutorialListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialListController.swift; sourceTree = "<group>"; };
 		A6886C13212DFD1D00D9EBD6 /* TutorialBasicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialBasicController.swift; sourceTree = "<group>"; };
+		A6C727A52134A1AF0077DBE3 /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
 		A6CB1945211C833900CDEF52 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CB1948211C833900CDEF52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6CB194A211C833900CDEF52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				A6886C13212DFD1D00D9EBD6 /* TutorialBasicController.swift */,
+				A6C727A52134A1AF0077DBE3 /* MockService.swift */,
 			);
 			path = Tutorials;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6CB194B211C833900CDEF52 /* ViewController.swift in Sources */,
+				A6C727A62134A1AF0077DBE3 /* MockService.swift in Sources */,
 				A6886C11212DFB5B00D9EBD6 /* TutorialListController.swift in Sources */,
 				A6886C14212DFD1D00D9EBD6 /* TutorialBasicController.swift in Sources */,
 				A6CB1949211C833900CDEF52 /* AppDelegate.swift in Sources */,
