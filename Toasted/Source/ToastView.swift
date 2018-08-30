@@ -19,6 +19,8 @@ public class ToastView: UIView {
         }
     }
 
+    var bottomConstraint: NSLayoutConstraint?
+
     public init(frame: CGRect, configuration: ToastConfiguration) {
         self.configuration = configuration
         super.init(frame: frame)

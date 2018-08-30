@@ -30,6 +30,8 @@ extension Toasted {
 
     static let becomesVisibleDuration: TimeInterval = 0.35
 
+    static let becomesVisibleDurationBottomUp: TimeInterval = 0.5
+
     static let fadeDuration: TimeInterval = 0.35
 
 }

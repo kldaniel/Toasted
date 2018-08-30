@@ -31,4 +31,6 @@ public struct ToastConfiguration {
         weight: .regular
     )
 
+    public var animationOption: AnimationOption = .fadeIn
+
 }

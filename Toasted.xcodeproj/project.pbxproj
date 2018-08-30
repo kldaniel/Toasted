@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A612315A2137655400A8D81C /* AnimationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61231592137655400A8D81C /* AnimationOption.swift */; };
 		A6A362F1212A10E00011CE06 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A362F0212A10E00011CE06 /* Toast.swift */; };
 		A6A362F5212B63E70011CE06 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A362F4212B63E70011CE06 /* ToastView.swift */; };
 		A6A362F7212B72C10011CE06 /* BasicToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A362F6212B72C10011CE06 /* BasicToastView.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A61231592137655400A8D81C /* AnimationOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationOption.swift; sourceTree = "<group>"; };
 		A6A362F0212A10E00011CE06 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		A6A362F4212B63E70011CE06 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		A6A362F6212B72C10011CE06 /* BasicToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicToastView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				A6A362F6212B72C10011CE06 /* BasicToastView.swift */,
 				A6C72726213201150077DBE3 /* ToastConfiguration.swift */,
 				A6C727A321349E7E0077DBE3 /* ToastHelper.swift */,
+				A61231592137655400A8D81C /* AnimationOption.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				A6C72727213201150077DBE3 /* ToastConfiguration.swift in Sources */,
 				A6C727A421349E7E0077DBE3 /* ToastHelper.swift in Sources */,
 				A6A362F5212B63E70011CE06 /* ToastView.swift in Sources */,
+				A612315A2137655400A8D81C /* AnimationOption.swift in Sources */,
 				A6CB193B211C826200CDEF52 /* Toasted.swift in Sources */,
 				A6A362F1212A10E00011CE06 /* Toast.swift in Sources */,
 				A6A362F7212B72C10011CE06 /* BasicToastView.swift in Sources */,

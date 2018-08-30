@@ -55,13 +55,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dcD-rO-Ddg">
-                                <rect key="frame" x="119.5" y="88" width="136" height="35"/>
+                                <rect key="frame" x="130" y="88" width="115" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGF-yc-T1v">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="EBW-i5-BRK"/>
-                                            <constraint firstAttribute="width" constant="60" id="cvT-Co-jUM"/>
                                         </constraints>
                                         <state key="normal" title="Toast 1"/>
                                         <connections>
@@ -69,7 +68,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j25-dR-mZR" userLabel="Toast 2">
-                                        <rect key="frame" x="76" y="0.0" width="60" height="35"/>
+                                        <rect key="frame" x="64" y="0.0" width="51" height="35"/>
                                         <state key="normal" title="Toast 2"/>
                                         <connections>
                                             <action selector="actionShow2:" destination="fiJ-kX-w9A" eventType="touchUpInside" id="50R-GJ-w7T"/>
@@ -77,15 +76,31 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="j25-dR-mZR" firstAttribute="width" secondItem="SGF-yc-T1v" secondAttribute="width" id="M5h-Qa-GWz"/>
                                     <constraint firstItem="j25-dR-mZR" firstAttribute="height" secondItem="SGF-yc-T1v" secondAttribute="height" id="dGP-pa-ryR"/>
                                 </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="X5I-4g-gaW">
+                                <rect key="frame" x="132.5" y="147" width="110" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGC-aa-j0q">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="FnO-87-aAM"/>
+                                        </constraints>
+                                        <state key="normal" title="From bottom up"/>
+                                        <connections>
+                                            <action selector="actionFromBottom:" destination="fiJ-kX-w9A" eventType="touchUpInside" id="1UJ-se-VS6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="X5I-4g-gaW" firstAttribute="top" secondItem="dcD-rO-Ddg" secondAttribute="bottom" constant="24" id="6Xw-bH-jFI"/>
                             <constraint firstItem="dcD-rO-Ddg" firstAttribute="centerX" secondItem="RYx-cI-uPJ" secondAttribute="centerX" id="PtP-UU-cnK"/>
                             <constraint firstItem="dcD-rO-Ddg" firstAttribute="top" secondItem="LaP-zY-yrE" secondAttribute="top" constant="24" id="c1a-Ce-hXt"/>
+                            <constraint firstItem="X5I-4g-gaW" firstAttribute="centerX" secondItem="RYx-cI-uPJ" secondAttribute="centerX" id="mlo-Ma-s3t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LaP-zY-yrE"/>
                     </view>

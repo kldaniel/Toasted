@@ -53,4 +53,12 @@ extension TutorialBasicController {
 
     }
 
+    @IBAction func actionFromBottom(_ sender: UIButton) {
+
+        let toast: Toast = Toast(title: "A toast message the comes from the bottom.")
+        toast.configuration.animationOption = .bottomUp
+        toast.show()
+
+    }
+
 }

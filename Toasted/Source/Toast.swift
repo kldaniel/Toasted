@@ -67,7 +67,7 @@ public class Toast: Toastable {
 
         if containerView.subviews.contains(toastView) { return }
 
-        toastView.alpha = 0.0
+        toastView.isHidden = true
 
         containerView.addSubview(toastView)
 
@@ -75,10 +75,12 @@ public class Toast: Toastable {
             equalTo: containerView.centerXAnchor, constant: 0.0
         ).isActive = true
 
-        toastView.bottomAnchor.constraint(
+        let bottomConstraint = toastView.bottomAnchor.constraint(
             equalTo: containerView.bottomAnchor,
             constant: -Toasted.bottomSpace
-        ).isActive = true
+        )
+        toastView.bottomConstraint = bottomConstraint
+        bottomConstraint.isActive = true
 
         toastView.leadingAnchor.constraint(
             greaterThanOrEqualTo: containerView.leadingAnchor,
@@ -95,15 +97,7 @@ public class Toast: Toastable {
             constant: Toasted.outerPadding
         ).isActive = true
 
-        UIView.animate(
-            withDuration: Toasted.becomesVisibleDuration,
-            delay: 0.0,
-            options: [.curveEaseIn],
-        animations: {
-            self.toastView.alpha = 1.0
-        }, completion: { (_) in
-            self.setupFadeTimer()
-        })
+        show(animation: configuration.animationOption)
 
     }
 
@@ -172,6 +166,54 @@ extension Toast {
             userInfo: nil, repeats: false
         )
 
+    }
+
+    private func show(animation: AnimationOption) {
+
+        if animation == .fadeIn {
+
+            toastView.alpha = 0.0
+            toastView.isHidden = false
+
+            UIView.animate(
+                withDuration: Toasted.becomesVisibleDuration,
+                delay: 0.0,
+                options: [.curveEaseIn],
+                animations: {
+
+                self.toastView.alpha = 1.0
+
+            }, completion: { (_) in
+                self.setupFadeTimer()
+            })
+
+        } else if animation == .bottomUp {
+
+            toastView.alpha = 1.0
+            toastView.bottomConstraint?.constant = toastView.frame.height
+            toastView.isHidden = false
+
+            toastView.superview?.layoutIfNeeded()
+
+            UIView.animate(
+                withDuration: Toasted.becomesVisibleDurationBottomUp,
+                delay: 0.0,
+                options: [.curveEaseIn],
+                animations: {
+
+                self.toastView.bottomConstraint?.constant = -Toasted.bottomSpace
+                self.toastView.superview?.layoutIfNeeded()
+
+            }, completion: { (_) in
+                self.setupFadeTimer()
+            })
+
+        }
+
+    }
+
+    private func afterDuration() {
+        self.toastView.removeFromSuperview()
     }
 
 }
