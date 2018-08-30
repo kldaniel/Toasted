@@ -26,7 +26,9 @@ The changelog for **Toasted**.
   - An example of service that can be used for Demo purposes and testing.
 - **ToastConfiguration**
   - This object has all the properties you can use to custome your `Toast`.
-  - Configurable parameters: duration, textColor, backgroundColor, textAlignment and font.
+  - Configurable parameters: duration, textColor, backgroundColor, textAlignment, font and animationOption.
+  - The propery of animationOption defines what kind of the animation is used when showing the Toast.
+  - Animation option can be standard (this is the default) and bottomUp.
 
 ### Changed
 
